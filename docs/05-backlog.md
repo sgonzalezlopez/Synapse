@@ -1,31 +1,40 @@
-# Backlog inicial — Synapse
+# Backlog — Synapse
 
-Estado inicial: **propuesto**, pendiente de validación y priorización.
+Actualización: 14 de noviembre de 2026. El estado **implementado** significa que existe código en main con CI superada; no significa que exista evidencia científica.
 
-## Fase 0 — Fundamentos
-- SYN-001: visión y límites del producto.
-- SYN-002: especificar el MVP.
-- SYN-003: arquitectura modular.
-- SYN-004: protocolo experimental y criterios de evaluación.
+## Fase 0 — Documentación
+- [x] SYN-001 — Visión y límites del producto.
+- [x] SYN-002 — MVP especificado; D1–D6 aprobadas.
+- [x] SYN-003 — Arquitectura aprobada y documentada.
+- [x] SYN-004 — Protocolo preregistrado v1 (sin ensayos confirmatorios ejecutados).
 
-## Fase 1 — Motor
-- SYN-005: proyecto base y pruebas automáticas.
-- SYN-006: mundo 2D y tiempo discreto con semilla.
-- SYN-007: agentes con energía, percepción y movimiento.
-- SYN-008: recursos, amenazas y ciclo vital.
-- SYN-009: reproducción y mutaciones.
-- SYN-010: emisión/recepción de señales con coste y control sin señales.
+## Fase 1 — Motor del primer prototipo
+- [x] SYN-005 — Proyecto Vite + React + TypeScript, Vitest y CI.
+- [x] SYN-006 — Mundo toroidal 2D, ticks y semillas.
+- [x] SYN-007 — Agentes con energía, redes neuronales, sensores y movimiento.
+- [x] SYN-008 — Alimento agrupado, riesgos ambientales estáticos y ciclo vital.
+- [x] SYN-009 — Reproducción asexual, herencia de pesos y mutación.
+- [x] SYN-010 — Señal escalar de un tick de retraso, atenuación, coste y tres controles exploratorios.
 
-## Fase 2 — Observabilidad
-- SYN-011: interfaz y controles de simulación.
-- SYN-012: estadísticas y trazabilidad de señales.
-- SYN-013: inspección de individuos y linajes.
-- SYN-014: exportación de configuración y resultados.
+## Fase 2 — Observabilidad del prototipo
+- [x] SYN-011 — Interfaz Canvas y controles de simulación.
+- [x] SYN-012 — Telemetría de población y cantidad de señales.
+- [x] SYN-013 — Inspección individual básica con filiación de progenitor (árbol genealógico completo, pendiente).
+- [x] SYN-014 — Exportación de resúmenes JSON y CSV de métricas recientes.
 
-## Fase 3 — Validación
-- SYN-015: ejecutar experimentos A/B con réplicas.
-- SYN-016: análisis de asociaciones y pruebas de perturbación.
-- SYN-017: informe de hallazgos, límites y siguientes hipótesis.
+## Fase 3 — Validación experimental (pendiente)
+- [ ] SYN-015 — Runner de réplicas, métrica primaria preregistrada de descendientes viables, resultados íntegros y comparaciones entre condiciones.
+- [ ] SYN-016 — Análisis estadístico con intervalos bootstrap y estudios de perturbación con genomas congelados.
+- [ ] SYN-017 — Informe de hallazgos reproducibles, límites y recomendaciones de nuevos ensayos.
 
-## Criterio de cierre
-No afirmar éxito experimental sin controles, repetición y análisis; no confundir entrega de software con evidencia científica.
+## Deuda técnica identificada
+- [ ] Añadir pruebas end-to-end de interacción del navegador y pruebas de rendimiento en ejecuciones largas.
+- [ ] Exportar historia completa de eventos y todos los ticks si el experimento lo requiere, en formato eficiente.
+- [ ] Reemplazar búsqueda ingenua de vecinos por índice espacial si las mediciones lo justifican.
+- [ ] Ampliar controles de neutralización de costes e información en condiciones disabled/shuffled.
+- [ ] Parametrizar y validar completamente topología y sensores de la red neuronal.
+- [ ] Hacer explícito en interfaz el criterio de paradas tempranas por extinción.
+- [ ] Revisar riesgos de sesgo reproductivo debidos al orden de resolución de agentes.
+
+## Condición de cierre del programa
+Se considerará **MVP funcional** cuando el software se ejecute y las pruebas de CI pasen. Solo se considerará **ensayo científico completo** cuando SYN-015, SYN-016 y SYN-017 tengan resultados reproducibles y una revisión rigurosa. No afirmar emergencia del lenguaje sin esas pruebas.
