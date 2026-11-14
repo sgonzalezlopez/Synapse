@@ -1,33 +1,44 @@
-# SYN-004 — Hipótesis y experimentos
+# SYN-004 — Protocolo experimental preregistrado v1
 
-## Hipótesis inicial (H1)
-En un entorno que favorezca la coordinación, permitir señales heredables y perceptibles puede incrementar un indicador de éxito (por ejemplo supervivencia) frente a una condición sin comunicación.
+Estado: especificación del protocolo aprobada como referencia antes de recoger datos. Ningún resultado positivo se presupone.
+
+## Pregunta
+¿La evolución de señales escalares heredables mejora una medida de éxito biológico y genera efectos causales sobre receptores, en comparación con controles sin información?
 
 ## Condiciones
-- A: señales activadas, con su coste energético.
-- B: señales desactivadas, manteniendo las demás reglas.
-- C (control opcional): señales aleatorias o desacopladas del emisor para investigar si importa su contenido.
+A: active: el genoma controla emisión y recepción. B: disabled: el canal no llega al receptor, con coste de emisión conservado para distinguir información de ahorro energético. C: shuffled: se permutan intensidades entre emisiones presentes por tick, con distribución y costes conservados; la relación contexto-señal se rompe parcialmente, y se documenta esta limitación.
 
-## Procedimiento
-1. Fijar reglas del mundo y versión del simulador.
-2. Definir antes de ejecutar la métrica principal y la duración.
-3. Ejecutar múltiples réplicas por condición con semillas registradas.
-4. Comparar métricas entre condiciones y dispersión entre réplicas.
-5. Repetir en distintos niveles de recursos, riesgos y coste de señal.
+## Hipótesis primaria
+H1: la media del número de descendientes viables por individuo fundador al finalizar 10 000 ticks será mayor en A que en C. Se considera viable un descendiente que alcance 20 ticks. Si hay extinción, se registra como cero. H0: no hay mejora. Se registran tasas de extinción por separado. Comparamos también A contra B (secundario).
 
-## Métricas
-- Principal: supervivencia por agente/generación o productividad energética, predefinida para cada ensayo.
-- Secundarias: crecimiento poblacional, número de señales, coste de señalización, frecuencia de reproducción.
-- Informacionales: asociación entre señales y contexto, dependencia entre señal recibida y respuesta, persistencia transgeneracional.
-- Robustez: estabilidad por semillas, tamaños de población y condiciones ambientales.
+## Diseño y tamaño
+- Prueba piloto técnica (no confirmatoria) de 5 semillas por condición para calibrar supervivencia y detectar errores.
+- Ensayo confirmatorio propuesto: 30 semillas predefinidas por condición, numeradas 1000..1029; misma parametrización general y misma distribución inicial condicionada a semillas.
+- Comparación por pares de semillas; como poblaciones evolucionan independientemente, compartir semilla no implica historia idéntica.
+- Fijar configuración, código/commit, versión, número de réplicas y métrica **antes** del primer ensayo confirmatorio; cualquier modificación inicia versión nueva.
+- El MVP puede exportar métricas de ingeniería antes de implementar la medición completa de descendencia viable; no presentar esos resultados como confirmatorios.
 
-## Criterio de indicio de comunicación funcional
-No basta con una correlación. Buscaremos mejora reproducible respecto al control, dependencia observable de la recepción y pérdida o reducción del efecto si se perturban las señales.
+## Estadística
+- Estimar diferencia de medias A-C y su intervalo bootstrap percentil del 95% sobre pares de réplicas; reportar mediana, dispersión y datos individuales.
+- Reportar tasa de extinción, coste de señales y sensibilidad a valores extremos.
+- No usar umbral de p aislado para afirmar lenguaje; mejora y mecanismo deben replicarse.
+- Si no se cumplen supuestos de comparación o los datos son escasos, etiquetar como exploratorio.
 
-## Limitaciones
-- Asociación no demuestra semántica, intención ni lenguaje.
-- Efectos de aprendizaje y evolución pueden confundirse; documentar mecanismos activos.
-- La selección de métricas posterior al experimento puede sesgar conclusiones.
+## Evaluación causal secundaria
+- Medir asociación señal/contexto y reacción de los receptores.
+- Comparar respuestas ante señales reales frente a señales permutadas.
+- Intervención de silenciamiento de canal con genomas congelados durante una ventana y comparación de acciones.
+- Ninguna asociación o cambio de supervivencia demuestra por sí solo semántica o intención.
+
+## Amenazas a la validez
+- Selección artificial de entornos favorables a coordinarse.
+- Diferencia de gasto energético entre tratamientos.
+- Variación del PRNG y divergencia posterior entre mundos.
+- Información filtrada del estado global o etiquetas semánticas.
+- Comparaciones visuales, elección posterior de métricas y extrapolación de un único ensayo.
 
 ## Registro de resultados
-Guardar versión, configuración, semilla, condición, duración, métricas y notas; evitar afirmar descubrimientos antes de controles adecuados.
+Exportar fecha, commit y versión del motor, config, semilla, condición, replicación, métricas brutas, resumen y limitaciones. Guardar ensayos confirmatorios en un manifiesto inmutable. Documentar resultados negativos.
+
+## Criterios de cierre
+SYN-004 está documentado cuando existen hipótesis, condiciones, replicaciones, métricas, análisis y limitaciones. La ejecución y verificación de 30 réplicas por tratamiento pertenece a SYN-015/016; no confundir protocolo redactado con experimento completado.
