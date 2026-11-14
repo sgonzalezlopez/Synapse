@@ -1,6 +1,6 @@
-# SYN-002 — Especificación funcional del MVP (propuesta v0.2)
+# SYN-002 — Especificación funcional del MVP (v0.3, decisiones D1–D6 aprobadas)
 
-> Estado: **propuesta para validación**. Los parámetros son valores iniciales de diseño, no hechos científicos demostrados ni decisiones definitivas.
+> Estado: **decisiones D1–D6 aprobadas el 14/11/2026**. Los valores numéricos iniciales siguen siendo configurables y provisionales.
 
 ## 1. Propósito y pregunta experimental
 Implementar una simulación bidimensional reproducible para investigar si agentes con sensores limitados pueden desarrollar **señales funcionales** sin asignar significados predefinidos a sus emisiones. El MVP no busca lenguaje natural ni conciencia.
@@ -38,7 +38,7 @@ Cada agente tiene identificador, posición, dirección, energía, edad, genotipo
 - **Sin roles preprogramados:** no existen exploradores, centinelas ni significados de alarma codificados.
 
 ### Política conductual
-Una política compacta común en estructura, con pesos heredables diferentes entre agentes, convierte observaciones normalizadas en acciones. Puede implementarse con red neuronal pequeña o reglas numéricas parametrizadas; **la elección permanece pendiente de validación**. No usar LLM ni entrenamiento externo durante el MVP.
+Una política compacta común en estructura, con pesos heredables diferentes entre agentes, convierte observaciones normalizadas en acciones. Se implementará con una **red neuronal pequeña de pesos heredables**, sin aprendizaje individual en la primera versión; topología pendiente de SYN-003. No usar LLM ni entrenamiento externo durante el MVP.
 
 ## 5. Canal de comunicación
 - Un escalar emitido en el intervalo [-1, 1]; 0 equivale a silencio.
@@ -86,7 +86,7 @@ Comparar poblaciones de evolución independiente, usando conjuntos de semillas e
 ## 10. Fuera del MVP
 Comunicación secuencial, cultura, clanes, engaño, aprendizaje social entre generaciones, depredadores adaptativos, 3D, mundos compartidos, persistencia cloud y entrenamiento con grandes modelos.
 
-## 11. Decisiones que requieren aprobación
+## 11. Decisiones aprobadas (14/11/2026)
 - D1: mundo toroidal continuo frente a cuadrícula.
 - D2: política de red neuronal pequeña heredable frente a reglas parametrizadas.
 - D3: reproducción asexual frente a sexual.
